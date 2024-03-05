@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/game.css') }}" />
+    <title>Game</title>
+</head>
+<body>
+    <div class="board">
+        {% set count = namespace(value=0) %}
+        {% for i in range(1, 9) %}
+            {% for j in range(1, 9) %}
+                {% set count.value = count.value + 1 %}
+                {% if i % 2 != 0 %}
+                    {% if j % 2 != 0 %}
+                        <div id="{{ count.value }}" class="square white"></div>
+                    {% else %}
+                        <div id="{{ count.value }}" class="square black"></div>
+                    {% endif %}
+                {% else %}
+                    {% if j % 2 != 0 %}
+                        <div id="{{ count.value }}" class="square black"></div>
+                    {% else %}
+                        <div id="{{ count.value }}" class="square white"></div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+</body>
+</html>

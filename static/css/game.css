@@ -1,0 +1,44 @@
+html {
+    font-family: "Noto Sans",Sans-Serif;
+    color-scheme: dark;
+}
+
+body {
+    background: #161512;
+    color: #bababa;
+    direction: ltr;
+    text-align: left;
+    overflow-x: hidden;
+}
+
+.board {
+    width: 480px;
+    height: 480px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.square {
+    float: left;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.black {
+    background-color: #B58863;
+}
+
+.white {
+    background-color: #F0D9B5;
+}
+
+.figure {
+    font-size: 60px;
+    cursor: pointer;
+}
+
