@@ -1,5 +1,10 @@
 from cfg import *
 import telebot
+from telebot import types
+import random
+import os
+
+f = False
 
 
 @BOT_TOKEN.message_handler(commands=['start'])
@@ -14,45 +19,27 @@ def help(message):
             '\n/daily - задача дня'
             '\n/profile - профиль'
             '\n/start_game - ссылка на игру под определённым кодом'
-            '\n'
-            '\n')
+            '\n/debut'
+            '\n/')
     BOT_TOKEN.send_message(message.chat.id, text)
 
 
-@BOT_TOKEN.message_handler(commands=['daily'])
-def daily(message):
-    photo = open('daily.png', 'rb')
-    BOT_TOKEN.send_photo(message.chat.id, photo)
-
-
 @BOT_TOKEN.message_handler(content_types=['text'])
-def profile(message):
+def great(message):
+    global f
+    if message.text == '/daily':
+        f = True
+        BOT_TOKEN.send_message(message.chat.id, 'рассылка включена')
     if message.text == '/profile':
-        BOT_TOKEN.send_message(message.chat.id, 'Вы зарегестрированны?')
-        text1 = ''
-        flag = False
-        if message.text == 'да':
-            profile_user(message.from_user.id)
-        if message.text == 'нет':
-            text1 = 'Ссылка для регестрации: '
-            BOT_TOKEN.send_message(message.chat.id, text1)
-
-    # def profile_user(message):
-    #    BOT_TOKEN.send_message(message.chat.id, 'писька')
-
-
-@BOT_TOKEN.message_handler(content_types=['text'])
-def start_game(message):
+        markup = types.InlineKeyboardMarkup()
+        button1 = types.InlineKeyboardButton("жмяк", url='https://sigma-chess.com')
+        markup.add(button1)
+        BOT_TOKEN.send_message(message.chat.id,
+                               "Cайт твоего профиля)".format(message.from_user),
+                               reply_markup=markup)
     if message.text == '/start_game':
-        BOT_TOKEN.send_message(message.chat.id, 'код игры') #  {123}
-
-
-def get_id(id):
-    pass
-
-
-def profile_user():
-    print(123)
+        code = 'pass'
+        BOT_TOKEN.send_message(message.chat.id, f'{code}')  # новая игра, Миша sql табла
 
 
 BOT_TOKEN.polling(none_stop=True)
