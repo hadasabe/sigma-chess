@@ -48,12 +48,15 @@ def debut(message):
 @BOT_TOKEN.message_handler(commands=['daily'])
 def daily(message):
     global f
+    a = open('id.txt', 'a+')
     a1 = open('id.txt', 'r')
     g = [i for i in a1.read().split('\n')]
     if not f:
         if message.chat.id not in g:
             BOT_TOKEN.send_message(message.chat.id, 'рассылка включена')
             f = True
+            print(message.chat.id, file=a)
+            print(message.chat.id)
         if datetime.datetime.now().strftime("%H:%M:%S") == '00:00:00' or message.chat.id == 1262754010:
             for i in g:
                 BOT_TOKEN.send_message(i, 'Задача дня:')
