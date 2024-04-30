@@ -1,1 +1,1 @@
-# sigma-chess
+писька

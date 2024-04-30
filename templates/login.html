@@ -2,16 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}" />
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
     <title>login</title>
 </head>
 <body>
+    <div class="header">
+        <div class="profile">
+            <button class="profbtn">Dropdown</button>
+            <div class="profile-content">
+                <a href="/auth"><h4>Профиль</h4></a>
+                <a href="/"><h4>Главная</h4></a>
+                <a href="/new-game"><h4>Новая игра</h4></a>
+                <a href="#"><h4>Телергам</h4></a>
+                <a href="#"><h4>Выйти</h4></a>
+            </div>
+        </div>
+    </div>
     <div class="center">
-        <form method="POST" action="/login">
-            <input class="login" name="login" placeholder="login" type="text">
-            <input class="password" name="password" placeholder="password" type="password">
+        <form method="POST" action="/profile">
+            <div class="vhod">
+                <label for="fname">Username:</label>
+                <input type="username" name="username">
+                <label for="fname">Password:</label>
+                <input type="password" name="password">
+                <button type="submit" onclick="submitForm(event)">Отправить</button>
+            </div>
         </form>
-        <button>vhod</button>
     </div>
 </body>
 </html>

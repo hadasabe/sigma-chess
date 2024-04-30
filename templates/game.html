@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/game.css') }}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="{{ url_for('static', filename='board.js') }}"></script>
     <title>Game</title>
 </head>
 <body>
+    <div class="header">
+        <div class="profile">
+            <button class="profbtn">Dropdown</button>
+            <div class="profile-content">
+                <a href="/auth"><h4>Профиль</h4></a>
+                <a href="/"><h4>Главная</h4></a>
+                <a href="/new-game"><h4>Новая игра</h4></a>
+                <a href=""><h4>Телергам</h4></a>
+                <a href="/quit"><h4>Выйти</h4></a>
+            </div>
+        </div>
+    </div>
     <div class="board">
-        {% set count = namespace(value=0) %}
-        {% for i in range(1, 9) %}
-            {% for j in range(1, 9) %}
-                {% set count.value = count.value + 1 %}
-                {% if i % 2 != 0 %}
-                    {% if j % 2 != 0 %}
-                        <div id="{{ count.value }}" class="square white"></div>
-                    {% else %}
-                        <div id="{{ count.value }}" class="square black"></div>
-                    {% endif %}
-                {% else %}
-                    {% if j % 2 != 0 %}
-                        <div id="{{ count.value }}" class="square black"></div>
-                    {% else %}
-                        <div id="{{ count.value }}" class="square white"></div>
-                    {% endif %}
-                {% endif %}
-            {% endfor %}
-        {% endfor %}
+        
     </div>
 </body>
 </html>
